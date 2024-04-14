@@ -1,21 +1,21 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
+  console.log('-------bang-------')
+  const username = document.querySelector('#username');
+  const password = document.querySelector('#password');
 
-  // Collect values from the login form
-  const username = document.querySelector('#username').value.trim();
-  const password = document.querySelector('#password').value.trim();
-
-  if (email && password) {
-    // Send a POST request to the API endpoint
+  if (username && password) {
     const response = await fetch('/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value
+      }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
@@ -24,20 +24,18 @@ const loginFormHandler = async (event) => {
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
+  const name = document.querySelector('#username-signup');
+  const email = document.querySelector('#email-signup');
+  const password = document.querySelector('#password-signup');
 
-  const username = document.querySelector('#signupusername').value.trim();
-  const email = document.querySelector('#signupemail').value.trim();
-  const password = document.querySelector('#signuppassword').value.trim();
-
-  if (username && email && password) {
+  if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username: name.value, email: email.value, password: password.value }),
       headers: { 'Content-Type': 'application/json' },
     });
-
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
@@ -45,9 +43,9 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.login-form')
+  .querySelector('#login-form')
   .addEventListener('submit', loginFormHandler);
 
 document
-  .querySelector('.signup-form')
+  .querySelector('#signup-form')
   .addEventListener('submit', signupFormHandler);
