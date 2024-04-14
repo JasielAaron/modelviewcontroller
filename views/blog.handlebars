@@ -1,0 +1,20 @@
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <p>{{content}}</p>
+  <p>Created by {{user.username}} on {{create_on_date}}</p>
+ 
+  <p>
+    <button class="btn btn-primary">Fund this Project!</button>
+  </p>
+
+  {{!-- add comment logic --}}
+  <div>
+    <input type="text" id="comment"> 
+    <input type="hidden" id="blog_id" value="{{id}}">
+    <button>Submit</button>
+  </div>
+    {{#each comments as |comment|}}
+    {{!-- add comment content here --}}
+    <div>{{comment.comment}}</div>
+    {{/each}}
+</div>

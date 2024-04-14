@@ -1,0 +1,36 @@
+<h1>Welcome, {{username}}!</h1>
+
+
+<div>
+  <h3>Create A New Blog:</h3>
+  <form class="newblog">
+    <div class="">
+      <label for="vlog name" id="blog-name">Name Blog:</label>
+      <input class="bloginput" type="text" id="blog-name" name="blog-name">
+    </div>
+    <div>
+      <label for="blog-content" id="blog-content">Content</label>
+      <textarea class="form-input" name="blog-content" id="blog-content" ></textarea>
+      <div>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+{{#if post.lenght }}
+<h3>Current Blog:</h3>
+
+{{#each blogs as |blog|}}
+<div>
+  <div>
+    <h4{{post.id}}>{{post.title}}</h4>
+  </div>
+  <div>
+  {{/each}}
+  </div>
+{{/if}}
+</div>
+
+<script src="./js/dashboard.js"></script>
